@@ -1,0 +1,67 @@
+    # Send Order Confirmation Email
+    user = current_user()
+    if user and (user.get("email") or user.get("username")):
+        recipient = user.get("email") or user.get("username")
+        subject = f"Order Confirmation - #{str(order_id)[-6:]}"
+        
+        items_html = "".join([f"<li>{i['name']} (x{i['qty']}) - ${i['price']*i['qty']:.2f}</li>" for i in cart['items']])
+        
+        html_content = f"""
+        <p>Dear {user.get('name')},</p>
+        <p>Thank you for your order!</p>
+        <p><strong>Order ID:</strong> {str(order_id)}</p>
+        <p><strong>Status:</strong> Placed</p>
+        <p><strong>Payment Mode:</strong> {payment_mode}</p>
+        <p><strong>Estimated Delivery:</strong> {order_doc['estimated_delivery']}</p>
+        <h3>Items:</h3>
+        <ul>{items_html}</ul>
+        <p><strong>Total:</strong> ${order_doc['total_amount']:.2f}</p>
+        <p>You can track your order in the 'My Orders' section.</p>
+        <p>Regards,<br>HealthCare Platform</p>
+        """
+        send_sendgrid_email(recipient, subject, html_content)
+
+    return jsonify({"ok": True, "msg": "Order placed successfully! Confirmation email sent."})
+
+@app.route("/my_orders")
+@login_required("patient")
+def my_orders():
+    user_id = session["user_id"]
+    orders = list(orders_col.find({"patient_id": user_id}).sort("order_time", -1))
+    return render_template("my_orders.html", orders=orders)
+
+@app.route("/cancel_order/<order_id>")
+@login_required("patient")
+def cancel_order(order_id):
+    user_id = session["user_id"]
+    order = orders_col.find_one({"_id": ObjectId(order_id), "patient_id": user_id})
+    
+    if not order:
+        flash("Order not found", "error")
+        return redirect(url_for("my_orders"))
+        
+    if order.get("status") == "Delivered":
+        flash("Cannot cancel delivered order", "error")
+        return redirect(url_for("my_orders"))
+        
+    if order.get("status") == "Cancelled":
+        flash("Order is already cancelled", "info")
+        return redirect(url_for("my_orders"))
+
+    # Update status
+    orders_col.update_one(
+        {"_id": ObjectId(order_id)},
+        {"$set": {"status": "Cancelled"}}
+    )
+    
+    # Restore stock
+    for item in order.get("items", []):
+        med_id = item.get("med_id") or item.get("medicine_id")
+        if med_id:
+            medicines_col.update_one(
+                {"_id": ObjectId(med_id)},
+                {"$inc": {"stock": item["qty"]}}
+            )
+            
+    flash("Order cancelled successfully", "success")
+    return redirect(url_for("my_orders"))

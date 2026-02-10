@@ -1,0 +1,54 @@
+# Core Flask and Web Framework
+Flask==3.0.0
+requests==2.32.3
+pymongo==4.6.1
+bcrypt==4.1.2
+python-dotenv==1.0.0
+Werkzeug==3.0.1
+
+# Email
+Flask-Mail==0.9.1
+sendgrid==6.11.0
+
+# WebSocket and Real-time
+Flask-SocketIO==5.3.6
+python-socketio==5.11.1
+python-engineio==4.9.0
+
+# Scheduling
+APScheduler==3.10.4
+
+# Payment
+stripe==5.0.0
+
+# OCR and Image Processing
+easyocr==1.7.1
+opencv-python-headless==4.9.0.80
+Pillow==10.2.0
+
+# ML and Data Science (Python 3.12 compatible)
+numpy==1.26.4
+pandas==2.2.0
+scikit-learn==1.5.2
+tensorflow-cpu==2.16.1
+
+# RAG and LangChain - STABLE WORKING VERSIONS
+langchain==0.3.12
+langchain-core==0.3.25
+langchain-community==0.3.12
+langchain-text-splitters==0.3.3
+
+# Google AI - Use direct SDK instead of langchain wrapper
+google-generativeai==0.8.3
+
+# Vector Store (Python 3.12 compatible)
+faiss-cpu==1.8.0
+
+# PDF Processing
+PyPDF2==3.0.1
+
+# Embeddings
+sentence-transformers==2.5.1
+
+# Additional utilities
+itsdangerous==2.1.2

@@ -1,0 +1,109 @@
+# === Python Bytecode ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === Virtual Environment ===
+venv/
+.env/
+env/
+ENV/
+.venv/
+
+# === Environment Variable Files ===
+*.env
+*.env.*
+.envrc
+
+# === Jupyter Notebook Checkpoints ===
+.ipynb_checkpoints/
+
+# === PyInstaller / Build Artifacts ===
+build/
+dist/
+*.spec
+
+# === Logs ===
+*.log
+logs/
+nohup.out
+
+# === Cache ===
+.cache/
+*.sqlite3
+*.db
+.cache/
+.mypy_cache/
+.pytest_cache/
+pytest_cache/
+pip-wheel-metadata/
+
+# === OS / Editor Files ===
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VSCode
+.vscode/
+.history/
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+
+# === Test & Coverage ===
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+
+# === Temporary / Backup Files ===
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# === Model Files (Optional) ===
+# Comment these if you want to track model files
+*.h5
+*.keras
+*.pkl
+*.joblib
+checkpoints/
+saved_models/
+models/
+
+# === Data Files (Optional) ===
+# Remove this if your repo includes datasets!
+data/
+*.csv
+*.tsv
+*.xlsx
+*.parquet
+
+faiss_indexes/
+faiss_index/
+faiss_index.bin
+*.faiss
+*.bin
+*.index
+docstore.pkl
+
+# === Uploaded Files (Common in Flask/Django apps) ===
+uploads/
+media/
+
+# === Node (in case you use frontend) ===
+node_modules/
+
+# === Docker ===
+docker-compose.override.yml

@@ -1,0 +1,196 @@
+AI-Powered Smart Healthcare Management System
+End-to-End Digital Healthcare Platform (ML + DL + AI + Realtime Chat + E-Pharmacy + Analytics)
+ Overview
+
+This project is a full-stack intelligent healthcare ecosystem built using Flask + MongoDB + AI + ML + DL + Realtime Communication.
+It integrates patient care, doctor workflows, medicine ordering, health analytics, image-based diagnosis, and AI assistance — all in one platform.
+
+This is a production-grade capstone project with rich features such as:
+
+1.Patient & Doctor Login / Signup
+2.Realtime Chat (Socket.IO)
+3.Appointment Booking System
+4.Diagnostics Test Center Booking
+5.ML Disease Prediction Models
+6.DL Skin Disease Detection
+7.Prescription OCR
+8.E-Pharmacy (Cart + Orders + Stock)
+9.AI-powered Suggestions (Gemini API)
+10.Health Statistics With Charts
+11.Admin Dashboard
+12.Email Alerts using SendGrid
+
+This project is suitable for:
+Academic / Capstone Projects
+Real-world healthcare prototypes
+Industry-level demos
+Research extensions
+Startup MVP
+
+Tech Stack
+1.Frontend
+HTML5, CSS3
+JavaScript
+Chart.js
+Socket.IO Client
+2.Backend
+Python Flask
+Flask-SocketIO
+Apscheduler
+EasyOCR
+TensorFlow / Keras
+Scikit-Learn
+XGBoost
+Gradient Boosting
+Gemini AI
+3.Database
+MongoDB Atlas (Cloud NoSQL)
+Email
+SendGrid API
+
+AI, ML & DL Components
+1. Machine Learning Models
+Disease	Model	Features Used
+Heart Disease Prediction	Naive Bayes	BP, Cholesterol, Age, etc.
+Diabetes Prediction	XGBoost	Glucose, BMI, Age, etc.
+Stroke Prediction	Gradient Boosting	BP, BMI, Work Type, etc.
+
+Models are trained and stored as .pkl files.
+
+2. Deep Learning
+
+Skin Disease Classification using MobileNetV2
+Classifies skin images
+Outputs disease name + confidence
+
+Fast and accurate
+OCR + AI
+Prescription Checker using EasyOCR
+Extracts handwritten/printed text from images
+Text is analyzed by Gemini AI
+Produces patient-friendly explanation
+AI Health Advisor
+Using Gemini 2.5 API:
+Based on uploaded stats and trends
+Gives personalized health suggestions
+
+User Roles
+Role	Capabilities
+Patient	Book appointments, chat with doctors, order medicines, upload stats, view analytics, OCR prescriptions
+Doctor	Realtime chat, view patient queries, respond, get notified
+Admin	Manage doctors, approve registrations, overall monitoring
+
+Major Features
+1. Realtime Chat (Doctor ↔ Patient)
+Built using Socket.IO
+
+Typing indicators
+Chat history stored
+Email alerts on new messages
+Works even with low internet (fallback polling)
+
+2. Appointment Booking System
+Select doctor
+Select date & time slot
+Detects slot conflicts
+Suggests alternate options
+Sends email reminders
+Saves to bookings collection
+
+3. Diagnostics Marketplace
+Patients can book:
+Blood tests
+X-ray
+CT scan
+MRI
+Master health checkup
+Each test center has:
+Hourly slots
+Unique tokens
+Booking history
+Stored in test_centers collection.
+
+4. E-Pharmacy System
+Browse medicines
+Add to cart
+Remove items
+Place order
+Auto stock reduction
+Orders stored in orders collection
+Cart stored in carts collection
+Each medicine has:
+Price
+Uses
+Stock count
+Email confirmation sent on purchase.
+
+5. Health Statistics Dashboard
+Patients can upload:
+Blood Pressure
+Sugar Level
+Heart Rate
+Weight
+
+Shown through:
+Bar Chart
+Line Chart (Trend)
+AI Health Advice
+
+Records stored in health_stats.
+
+6. Prescription Checker (OCR + AI Explanation)
+
+Flow:
+Upload prescription image
+EasyOCR extracts text
+Gemini AI explains:
+Medicines
+Dosage
+Purposes
+Precautions
+Saved in database
+
+7. Disease Prediction Modules
+Machine Learning models predict:
+
+Heart disease risk
+Diabetes risk
+Stroke risk
+
+Each prediction includes:
+Probability
+Risk classification
+AI-based explanation
+
+8. Deep Learning: Skin Disease Detection
+MobileNetV2
+High accuracy
+Upload skin lesion image
+Returns:
+Prediction
+Confidence
+Care instructions
+
+9. Admin Panel
+
+View all doctors
+Approve doctors
+Admin login
+System-level controls
+
+10.MongoDB Collections
+patients
+doctors
+admins
+pat_msg
+doc_msg
+bookings
+test_centers
+medicines
+carts
+orders
+health_stats
+password_tokens
+foods
+bloodtests
+diagnostics_logs
